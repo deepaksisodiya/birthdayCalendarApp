@@ -16,6 +16,7 @@
     e.preventDefault();
     getFormData();
     parseJson();
+    mapObjToDom();
   }, false);
   
   function getFormData() {
@@ -34,7 +35,6 @@
       } else {
         finalObject[day].push(initialName);
       }
-      console.log(finalObject);
       return obj;
     });
   }
@@ -51,6 +51,24 @@
     var month = birthdayDateArr[1] - 1;
     var day = new Date(year, month, date).getDay();
     return day;
+  }
+
+  function mapObjToDom() {
+    for(var arr in finalObject) {
+      var nameArr = finalObject[arr];
+      var docFrag = document.createDocumentFragment();
+      nameArr.map(function (initialName) {
+        docFrag.appendChild(createDiv(initialName));
+      });
+      document.getElementById(arr).appendChild(docFrag);
+    }
+  }
+  
+  function createDiv(text) {
+    var div = document.createElement('div');
+    var node = document.createTextNode(text);
+    div.appendChild(node);
+    return div;
   }
 
 })();

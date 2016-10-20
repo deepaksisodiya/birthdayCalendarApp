@@ -6,3 +6,14 @@
     width: 400px;
     height: 250px;
 }
+
+.dayBox {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin-right: 10px;
+}
+
+.dayContainer {
+    display: flex;
+}
