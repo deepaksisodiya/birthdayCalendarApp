@@ -7,6 +7,7 @@
 .textArea {
     width: 400px;
     height: 250px;
+    margin-right: 50px;
 }
 
 .dayBox {
@@ -42,4 +43,5 @@
 
 .form {
     display: flex;
+    margin-top: 40px;
 }
