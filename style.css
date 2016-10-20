@@ -1,5 +1,7 @@
 .appBackgroundColor {
     background-color: #EBF1F3;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .textArea {
@@ -8,18 +10,36 @@
 }
 
 .dayBox {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 150px;
     background-color: red;
     margin-right: 10px;
 }
 
 .dayContainer {
     display: flex;
+    justify-content: space-between;
 }
 
 .initialNameBox {
     background-color: white;
     width: 20%;
     height: 20%;
+}
+
+.appName {
+    font-size: 40px;
+    color: #7D8A94;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.dayName {
+    background-color: #ABA1EC;
+    text-align: end;
+}
+
+.form {
+    display: flex;
 }
