@@ -17,3 +17,9 @@
 .dayContainer {
     display: flex;
 }
+
+.initialNameBox {
+    background-color: white;
+    width: 20%;
+    height: 20%;
+}

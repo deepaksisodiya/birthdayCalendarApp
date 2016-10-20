@@ -14,10 +14,20 @@
   var button = document.getElementById('updateBtn');
   button.addEventListener('click', function(e) {
     e.preventDefault();
+    clearDom();
     getFormData();
     parseJson();
     mapObjToDom();
   }, false);
+
+  function clearDom() {
+    finalObject = {};
+    var initialNameBoxArr = document.getElementsByClassName('initialNameBox');
+    Array.prototype.slice.call(initialNameBoxArr).map(function (value) {
+      console.log('value ', value);
+      value.parentNode.removeChild(value);
+    });
+  }
   
   function getFormData() {
     year = document.getElementById('year').value;
@@ -27,7 +37,6 @@
   function parseJson() {
     var jsonObjArr = JSON.parse(jsonData);
     jsonObjArr.map(function (obj) {
-      console.log(obj);
       var initialName = findInitialsFromName(obj.name);
       var day = getDate(obj.birthday);
       if(finalObject[day] === undefined) {
@@ -66,6 +75,7 @@
   
   function createDiv(text) {
     var div = document.createElement('div');
+    div.className = 'initialNameBox';
     var node = document.createTextNode(text);
     div.appendChild(node);
     return div;
