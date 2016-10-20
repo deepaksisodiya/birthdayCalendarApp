@@ -5,11 +5,10 @@
 
 (function () {
 
-  console.log('Deepak Sisodiya');
-
   var finalObject = {};
   var year;
   var jsonData;
+  var initialNameBoxClassName = 'initialNameBox';
 
   var button = document.getElementById('updateBtn');
   button.addEventListener('click', function(e) {
@@ -22,9 +21,8 @@
 
   function clearDom() {
     finalObject = {};
-    var initialNameBoxArr = document.getElementsByClassName('initialNameBox');
-    Array.prototype.slice.call(initialNameBoxArr).map(function (value) {
-      console.log('value ', value);
+    var initialNameBoxNodeList = document.getElementsByClassName(initialNameBoxClassName);
+    Array.prototype.slice.call(initialNameBoxNodeList).map(function (value) {
       value.parentNode.removeChild(value);
     });
   }
@@ -75,7 +73,7 @@
   
   function createDiv(text) {
     var div = document.createElement('div');
-    div.className = 'initialNameBox';
+    div.className = initialNameBoxClassName;
     var node = document.createTextNode(text);
     div.appendChild(node);
     return div;
