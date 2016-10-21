@@ -14,12 +14,13 @@
 }
 
 .dayBox {
-    width: 145px;
-    height: 165px;
-    background-color: red;
+    width: 153px;
+    height: 196px;
     margin-right: 10px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    border-color: #D3D9DB;
+    background-color: white;
 }
 
 .dayContainer {
@@ -45,9 +46,9 @@
     background-color: #ABA1EC;
     text-align: end;
     color: #D0E8FC;
-    padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-right: 14px;
+    padding-top: 13px;
+    padding-bottom: 13px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
