@@ -15,15 +15,10 @@
     e.preventDefault();
     clearDom();
     getFormData();
-
-    isValidYear();
-
     if(isValidForm()) {
       parseJson();
       mapObjToDom();
     }
-
-
   }, false);
 
   function isValidForm() {
@@ -110,13 +105,9 @@
   function mapObjToDom() {
     for(var arr in finalObject) {
       var nameArr = finalObject[arr];
-
       var nameArrLength = nameArr.length;
-
       var divider = getDivider(1, 5, nameArrLength, 2, 0);
-
       var percentage = 100 / divider;
-
       var docFrag = document.createDocumentFragment();
       nameArr.map(function (initialName) {
         docFrag.appendChild(createDiv(initialName, percentage));
@@ -131,14 +122,10 @@
     div.style.backgroundColor = getRandomColor();
     div.style.width = percentage + '%';
     div.style.height = percentage + '%';
-
     var div2 = document.createElement('div');
     div2.className = 'initialNameText';
-
     var node = document.createTextNode(text);
-
     div2.appendChild(node);
-
     div.appendChild(div2);
     return div;
   }
@@ -169,4 +156,3 @@
   }
 
 })();
-
