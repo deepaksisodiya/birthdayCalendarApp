@@ -82,10 +82,8 @@
       var age = getAge(obj.birthday);
       if(finalObject[day] === undefined) {
         finalObject[day] = [[initialName, age]];
-        //finalObject[day] = [initialName]
       } else {
         finalObject[day].push([initialName, age]);
-        //finalObject[day].push(initialName);
       }
       return obj;
     });
@@ -134,8 +132,6 @@
       }).forEach(function(bug) {
         document.getElementById(arr).appendChild(bug);
       });
-      //console.log('elements ', elements);
-      //document.getElementById(arr).appendChild(docFrag);
     }
   }
   
