@@ -5,16 +5,21 @@
 }
 
 .textArea {
-    width: 400px;
-    height: 250px;
+    width: 600px;
+    height: 350px;
     margin-right: 50px;
+    font-size: 15px;
+    border-radius: 3px;
+    border-color: #D3D9DB;
 }
 
 .dayBox {
-    width: 130px;
-    height: 150px;
+    width: 145px;
+    height: 165px;
     background-color: red;
     margin-right: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .dayContainer {
@@ -39,9 +44,41 @@
 .dayName {
     background-color: #ABA1EC;
     text-align: end;
+    color: #D0E8FC;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .form {
     display: flex;
     margin-top: 40px;
+}
+
+.yearText {
+    font-size: 30px;
+    color: #7D8A94;
+}
+
+.yearInput {
+    border: 1px solid #D3D9DB;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.updateButton {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #1789EC;
+    color: #D0E8FC;
+    border-radius: 5px;
+    border-color: transparent;
+    font-size: 20px;
 }
