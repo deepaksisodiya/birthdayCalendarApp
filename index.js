@@ -74,9 +74,19 @@
   function createDiv(text) {
     var div = document.createElement('div');
     div.className = initialNameBoxClassName;
+    div.style.backgroundColor = getRandomColor();
     var node = document.createTextNode(text);
     div.appendChild(node);
     return div;
+  }
+
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
   }
 
 })();
