@@ -79,13 +79,47 @@
     jsonObjArr.map(function (obj) {
       var initialName = findInitialsFromName(obj.name);
       var day = getDate(obj.birthday);
+
+      var age = getAge(obj.birthday);
+
+      console.log('age is ', age);
+
       if(finalObject[day] === undefined) {
-        finalObject[day] = [initialName]
+
+        finalObject[day] = [[initialName, age]];
+
+        //finalObject[day] = [initialName]
       } else {
-        finalObject[day].push(initialName);
+
+        finalObject[day].push([initialName, age]);
+
+        //finalObject[day].push(initialName);
       }
       return obj;
     });
+  }
+
+  function getAge(birthday) {
+    var birthday = birthday.split('/');
+    var day = birthday[0];
+    var month = birthday[1];
+    var year = birthday[2];
+    var birthDate = new Date(year, month - 1, day);
+
+    var ageDifMs = Date.now() - birthDate.getTime();
+    console.log('ageDifMs ', ageDifMs);
+
+    var ageDate = new Date(ageDifMs);
+    console.log('ageDate ', ageDate);
+    var age = Math.abs(ageDate.getUTCFullYear() - 1970);
+    console.log('age ', age);
+    return age;
+  }
+
+  function _calculateAge(birthday) { // birthday is a date
+    var ageDifMs = Date.now() - birthday.getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
   function findInitialsFromName(name) {
@@ -109,16 +143,30 @@
       var divider = getDivider(1, 5, nameArrLength, 2, 0);
       var percentage = 100 / divider;
       var docFrag = document.createDocumentFragment();
-      nameArr.map(function (initialName) {
-        docFrag.appendChild(createDiv(initialName, percentage));
+      nameArr.map(function (innerArray) {
+        docFrag.appendChild(createDiv(innerArray[0], percentage, innerArray[1]));
       });
-      document.getElementById(arr).appendChild(docFrag);
+
+      var divList = docFrag.querySelectorAll('div.initialNameBox');
+      divList = Array.prototype.slice.call(divList, 0);
+      console.log('divList ', divList);
+
+      divList.sort(function(a, b) {
+        return parseInt(a.getAttribute("age")) - parseInt(b.getAttribute("age"));
+      }).forEach(function(bug) {
+        document.getElementById(arr).appendChild(bug);
+      });
+      //console.log('elements ', elements);
+
+      //document.getElementById(arr).appendChild(docFrag);
+
     }
   }
   
-  function createDiv(text, percentage) {
+  function createDiv(text, percentage, age) {
     var div = document.createElement('div');
     div.className = initialNameBoxClassName;
+    div.setAttribute('age', age);
     div.style.backgroundColor = getRandomColor();
     div.style.width = percentage + '%';
     div.style.height = percentage + '%';
