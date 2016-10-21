@@ -82,7 +82,7 @@
 
       var age = getAge(obj.birthday);
 
-      console.log('age is ', age);
+
 
       if(finalObject[day] === undefined) {
 
@@ -107,12 +107,12 @@
     var birthDate = new Date(year, month - 1, day);
 
     var ageDifMs = Date.now() - birthDate.getTime();
-    console.log('ageDifMs ', ageDifMs);
+
 
     var ageDate = new Date(ageDifMs);
-    console.log('ageDate ', ageDate);
+
     var age = Math.abs(ageDate.getUTCFullYear() - 1970);
-    console.log('age ', age);
+
     return age;
   }
 
@@ -149,7 +149,7 @@
 
       var divList = docFrag.querySelectorAll('div.initialNameBox');
       divList = Array.prototype.slice.call(divList, 0);
-      console.log('divList ', divList);
+
 
       divList.sort(function(a, b) {
         return parseInt(a.getAttribute("age")) - parseInt(b.getAttribute("age"));
