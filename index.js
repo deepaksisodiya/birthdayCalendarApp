@@ -84,8 +84,15 @@
     div.style.backgroundColor = getRandomColor();
     div.style.width = percentage + '%';
     div.style.height = percentage + '%';
+
+    var div2 = document.createElement('div');
+    div2.className = 'initialNameText';
+
     var node = document.createTextNode(text);
-    div.appendChild(node);
+
+    div2.appendChild(node);
+
+    div.appendChild(div2);
     return div;
   }
 

@@ -29,8 +29,9 @@
 }
 
 .initialNameBox {
-    width: 20%;
-    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .appName {
@@ -81,4 +82,10 @@
     border-radius: 5px;
     border-color: transparent;
     font-size: 20px;
+}
+
+.initialNameText {
+    font-size: 18px;
+    color: white;
+    font-family: sans-serif;
 }
