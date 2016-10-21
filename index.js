@@ -103,12 +103,6 @@
     return age;
   }
 
-  function _calculateAge(birthday) { // birthday is a date
-    var ageDifMs = Date.now() - birthday.getTime();
-    var ageDate = new Date(ageDifMs); // miliseconds from epoch
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-  }
-
   function findInitialsFromName(name) {
     return name.split(" ").map(function (str) {
       return str.charAt(0);
