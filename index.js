@@ -63,18 +63,27 @@
   function mapObjToDom() {
     for(var arr in finalObject) {
       var nameArr = finalObject[arr];
+
+      var nameArrLength = nameArr.length;
+
+      var divider = getDivider(1, 5, nameArrLength, 2, 0);
+
+      var percentage = 100 / divider;
+
       var docFrag = document.createDocumentFragment();
       nameArr.map(function (initialName) {
-        docFrag.appendChild(createDiv(initialName));
+        docFrag.appendChild(createDiv(initialName, percentage));
       });
       document.getElementById(arr).appendChild(docFrag);
     }
   }
   
-  function createDiv(text) {
+  function createDiv(text, percentage) {
     var div = document.createElement('div');
     div.className = initialNameBoxClassName;
     div.style.backgroundColor = getRandomColor();
+    div.style.width = percentage + '%';
+    div.style.height = percentage + '%';
     var node = document.createTextNode(text);
     div.appendChild(node);
     return div;
@@ -87,6 +96,22 @@
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
+  }
+
+  function getDivider(a, b, numberOfElements, divider, incrementValue) {
+    if(numberOfElements > 1) {
+      if(numberOfElements > a && numberOfElements < b) {
+        return divider;
+      } else {
+        a = b - 1;
+        b = b + 5 + incrementValue;
+        divider = divider + 1;
+        incrementValue = incrementValue + 2;
+        return getDivider(a, b, numberOfElements, divider, incrementValue);
+      }
+    } else {
+      return 1;
+    }
   }
 
 })();
