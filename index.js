@@ -79,20 +79,12 @@
     jsonObjArr.map(function (obj) {
       var initialName = findInitialsFromName(obj.name);
       var day = getDate(obj.birthday);
-
       var age = getAge(obj.birthday);
-
-
-
       if(finalObject[day] === undefined) {
-
         finalObject[day] = [[initialName, age]];
-
         //finalObject[day] = [initialName]
       } else {
-
         finalObject[day].push([initialName, age]);
-
         //finalObject[day].push(initialName);
       }
       return obj;
@@ -105,14 +97,9 @@
     var month = birthday[1];
     var year = birthday[2];
     var birthDate = new Date(year, month - 1, day);
-
     var ageDifMs = Date.now() - birthDate.getTime();
-
-
     var ageDate = new Date(ageDifMs);
-
     var age = Math.abs(ageDate.getUTCFullYear() - 1970);
-
     return age;
   }
 
@@ -146,20 +133,15 @@
       nameArr.map(function (innerArray) {
         docFrag.appendChild(createDiv(innerArray[0], percentage, innerArray[1]));
       });
-
       var divList = docFrag.querySelectorAll('div.initialNameBox');
       divList = Array.prototype.slice.call(divList, 0);
-
-
       divList.sort(function(a, b) {
         return parseInt(a.getAttribute("age")) - parseInt(b.getAttribute("age"));
       }).forEach(function(bug) {
         document.getElementById(arr).appendChild(bug);
       });
       //console.log('elements ', elements);
-
       //document.getElementById(arr).appendChild(docFrag);
-
     }
   }
   
