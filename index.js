@@ -15,9 +15,56 @@
     e.preventDefault();
     clearDom();
     getFormData();
-    parseJson();
-    mapObjToDom();
+
+    isValidYear();
+
+    if(isValidForm()) {
+      parseJson();
+      mapObjToDom();
+    }
+
+
   }, false);
+
+  function isValidForm() {
+    if(jsonData && year) {
+      if(isValidJSON()) {
+        if(isValidYear()) {
+          return true;
+        } else {
+          alert('Year field is not correct!');
+        }
+        return true;
+      } else {
+        alert('JSON is not correct!');
+        return false;
+      }
+    } else {
+      alert('Please fill all fields of form');
+    }
+  }
+
+  function isValidYear() {
+    var date = new Date(year.toString());
+    if(date.toDateString() === 'Invalid Date') {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function isValidJSON() {
+    var json = typeof jsonData !== 'string' ? JSON.stringify(jsonData) : jsonData;
+    try {
+      var data = JSON.parse(json);
+    } catch (e) {
+      return false;
+    }
+    if(typeof data === 'object' && data !== null) {
+      return true;
+    }
+    return false;
+  }
 
   function clearDom() {
     finalObject = {};
