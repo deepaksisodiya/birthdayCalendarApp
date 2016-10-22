@@ -27,7 +27,7 @@
 
     var jsonD = document.getElementById('jsonData').value;
     jsonD = JSON.parse(jsonD);
-    var textedJson = JSON.stringify(jsonD,null, 4);
+    var textedJson = JSON.stringify(jsonD,null, '\t');
     document.getElementById('jsonData').value = textedJson;
 
   }, false);
