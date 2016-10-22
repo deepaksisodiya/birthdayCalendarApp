@@ -10,6 +10,9 @@
   var jsonData;
   var initialNameBoxClassName = 'initialNameBox';
 
+  /*
+  click event listener to update button
+   */
   var button = document.getElementById('updateBtn');
   button.addEventListener('click', function(e) {
     e.preventDefault();
@@ -21,6 +24,9 @@
     }
   }, false);
 
+  /*
+  blur event listener to textarea input
+   */
   var textArea = document.getElementById('jsonData');
   textArea.addEventListener('blur', function (e) {
     e.preventDefault();
@@ -32,6 +38,9 @@
     }
   }, false);
 
+  /*
+  checking if form is valid or not
+   */
   function isValidForm() {
     if(jsonData && year) {
       if(isValidJSON(jsonData)) {
@@ -51,6 +60,9 @@
     }
   }
 
+  /*
+  checking if year is valid or not
+   */
   function isValidYear() {
     var date = new Date(year.toString());
     if(date.toDateString() === 'Invalid Date') {
@@ -60,6 +72,9 @@
     }
   }
 
+  /*
+  checking if json is valid or not
+   */
   function isValidJSON(jsonData) {
     var json = typeof jsonData !== 'string' ? JSON.stringify(jsonData) : jsonData;
     try {
@@ -73,6 +88,9 @@
     return false;
   }
 
+  /*
+  clear all the nodes from each card
+   */
   function clearDom() {
     finalObject = {};
     var initialNameBoxNodeList = document.getElementsByClassName(initialNameBoxClassName);
@@ -80,12 +98,18 @@
       node.parentNode.removeChild(node);
     });
   }
-  
+
+  /*
+  getting data from form
+   */
   function getFormData() {
     year = document.getElementById('year').value;
     jsonData = document.getElementById('jsonData').value;
   }
 
+  /*
+  parsing the json and constructing an object (finalObject)
+   */
   function parseJson() {
     var jsonObjArr = JSON.parse(jsonData);
     var initialName;
@@ -104,6 +128,9 @@
     });
   }
 
+  /*
+  takes date in formate 25/12/1990 and return age
+   */
   function getAge(birthday) {
     var birthday = birthday.split('/');
     var day = birthday[0];
@@ -116,12 +143,19 @@
     return age;
   }
 
+  /*
+  takes name (John Doe) and return initials of name (JD)
+   */
   function findInitialsFromName(name) {
     return name.split(" ").map(function (str) {
       return str.charAt(0);
     }).join("");
   }
 
+  /*
+  takes date in formate 25/12/1990 and return day of 25/12/year
+  year is the value of year input field
+   */
   function getDate(birthdayDate) {
     var birthdayDateArr = birthdayDate.split("/");
     var date = birthdayDateArr[0];
@@ -130,6 +164,12 @@
     return day;
   }
 
+  /*
+  iterating the finalObject
+  making element list
+  sorting element list by age
+  adding element list to Dom
+   */
   function mapObjToDom() {
     var nameAgeArr;
     var nameAgeArrLength;
@@ -157,7 +197,10 @@
       });
     }
   }
-  
+
+  /*
+  creating div element
+   */
   function createDiv(text, percentage, age) {
     var div = document.createElement('div');
     div.className = initialNameBoxClassName;
@@ -173,6 +216,9 @@
     return div;
   }
 
+  /*
+  return random color string
+   */
   function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
@@ -182,6 +228,9 @@
     return color;
   }
 
+  /*
+  takes a, b, numberOfElements, divider, incrementValue and return number
+   */
   function getDivider(a, b, numberOfElements, divider, incrementValue) {
     if(numberOfElements > 1) {
       if(numberOfElements > a && numberOfElements < b) {
