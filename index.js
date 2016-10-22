@@ -171,7 +171,11 @@
   iterating the finalObject
   making element list
   sorting element list by age
-  adding element list to Dom
+  adding element list to Dom (card)
+  iterating the cards
+  finding the empty card
+  making element
+  adding element to dom (empty card)
    */
   function mapObjToDom() {
     var nameAgeArr;
@@ -208,6 +212,9 @@
     }
   }
 
+  /*
+  creating div element for empty card
+   */
   function createImageDiv() {
     var div = document.createElement('div');
     div.className = 'noBirthday';
@@ -221,7 +228,7 @@
   }
 
   /*
-  creating div element
+  creating div element for non empty card
    */
   function createDiv(text, percentage, age) {
     var div = document.createElement('div');
