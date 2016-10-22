@@ -98,3 +98,10 @@
     color: white;
     font-family: sans-serif;
 }
+
+.noBirthday {
+    background-color: #DFE5E7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

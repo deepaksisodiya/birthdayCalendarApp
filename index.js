@@ -93,10 +93,13 @@
    */
   function clearDom() {
     finalObject = {};
-    var initialNameBoxNodeList = document.getElementsByClassName(initialNameBoxClassName);
-    Array.prototype.slice.call(initialNameBoxNodeList).map(function (node) {
-      node.parentNode.removeChild(node);
-    });
+    var myNode;
+    for(var i = 0; i < 7; i++) {
+      myNode = document.getElementById(i);
+      while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+      }
+    }
   }
 
   /*
@@ -177,6 +180,7 @@
     var percentage;
     var docFrag;
     var divList;
+    var node;
     for(var arr in finalObject) {
       nameAgeArr = finalObject[arr];
       nameAgeArrLength = nameAgeArr.length;
@@ -196,6 +200,23 @@
         document.getElementById(arr).appendChild(div);
       });
     }
+    for(var i = 0; i < 7; i++) {
+      node = document.getElementById(i);
+      if(node.childNodes.length === 0) {
+        document.getElementById(i).appendChild(createImageDiv());
+      }
+    }
+  }
+
+  function createImageDiv() {
+    var div = document.createElement('div');
+    div.className = 'noBirthday';
+    div.style.width = '100%';
+    div.style.height = '100%';
+    var childDiv = document.createElement('img');
+    childDiv.src = './finalImage.png';
+    div.appendChild(childDiv);
+    return div;
   }
 
   /*
