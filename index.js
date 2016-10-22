@@ -214,7 +214,8 @@
     div.style.width = '100%';
     div.style.height = '100%';
     var childDiv = document.createElement('img');
-    childDiv.src = './finalImage.png';
+    childDiv.style.width = '50%';
+    childDiv.src = './mustacheLogo.png';
     div.appendChild(childDiv);
     return div;
   }
