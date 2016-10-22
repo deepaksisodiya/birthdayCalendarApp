@@ -35,11 +35,13 @@
 }
 
 .appName {
-    font-size: 40px;
+    font-size: 39px;
     color: #7D8A94;
     text-align: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 65px;
+    margin-bottom: 65px;
+    font-family: sans-serif;
+    font-weight: 200;
 }
 
 .dayName {
