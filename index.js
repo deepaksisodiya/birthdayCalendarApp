@@ -24,21 +24,22 @@
   var textArea = document.getElementById('jsonData');
   textArea.addEventListener('blur', function (e) {
     e.preventDefault();
-
     var jsonD = document.getElementById('jsonData').value;
-    jsonD = JSON.parse(jsonD);
-    var textedJson = JSON.stringify(jsonD,null, '\t');
-    document.getElementById('jsonData').value = textedJson;
-
+    if(jsonD && isValidJSON(jsonD)) {
+      jsonD = JSON.parse(jsonD);
+      var textedJson = JSON.stringify(jsonD,null, '\t');
+      document.getElementById('jsonData').value = textedJson;
+    }
   }, false);
 
   function isValidForm() {
     if(jsonData && year) {
-      if(isValidJSON()) {
+      if(isValidJSON(jsonData)) {
         if(isValidYear()) {
           return true;
         } else {
           alert('Year field is not correct!');
+          return false;
         }
         return true;
       } else {
@@ -59,7 +60,7 @@
     }
   }
 
-  function isValidJSON() {
+  function isValidJSON(jsonData) {
     var json = typeof jsonData !== 'string' ? JSON.stringify(jsonData) : jsonData;
     try {
       var data = JSON.parse(json);
@@ -75,8 +76,8 @@
   function clearDom() {
     finalObject = {};
     var initialNameBoxNodeList = document.getElementsByClassName(initialNameBoxClassName);
-    Array.prototype.slice.call(initialNameBoxNodeList).map(function (value) {
-      value.parentNode.removeChild(value);
+    Array.prototype.slice.call(initialNameBoxNodeList).map(function (node) {
+      node.parentNode.removeChild(node);
     });
   }
   
@@ -87,10 +88,13 @@
 
   function parseJson() {
     var jsonObjArr = JSON.parse(jsonData);
+    var initialName;
+    var day;
+    var age;
     jsonObjArr.map(function (obj) {
-      var initialName = findInitialsFromName(obj.name);
-      var day = getDate(obj.birthday);
-      var age = getAge(obj.birthday);
+      initialName = findInitialsFromName(obj.name);
+      day = getDate(obj.birthday);
+      age = getAge(obj.birthday);
       if(finalObject[day] === undefined) {
         finalObject[day] = [[initialName, age]];
       } else {
@@ -127,16 +131,22 @@
   }
 
   function mapObjToDom() {
+    var nameArr;
+    var nameArrLength;
+    var divider;
+    var percentage;
+    var docFrag;
+    var divList;
     for(var arr in finalObject) {
-      var nameArr = finalObject[arr];
-      var nameArrLength = nameArr.length;
-      var divider = getDivider(1, 5, nameArrLength, 2, 0);
-      var percentage = 100 / divider;
-      var docFrag = document.createDocumentFragment();
+      nameArr = finalObject[arr];
+      nameArrLength = nameArr.length;
+      divider = getDivider(1, 5, nameArrLength, 2, 0);
+      percentage = 100 / divider;
+      docFrag = document.createDocumentFragment();
       nameArr.map(function (innerArray) {
         docFrag.appendChild(createDiv(innerArray[0], percentage, innerArray[1]));
       });
-      var divList = docFrag.querySelectorAll('div.initialNameBox');
+      divList = docFrag.querySelectorAll('div.initialNameBox');
       divList = Array.prototype.slice.call(divList, 0);
       divList.sort(function(a, b) {
         return parseInt(a.getAttribute("age")) - parseInt(b.getAttribute("age"));
