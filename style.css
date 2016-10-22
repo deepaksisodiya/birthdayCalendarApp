@@ -17,11 +17,11 @@
 .dayBox {
     width: 155px;
     height: 155px;
-    border-color: #D3D9DB;
     background-color: white;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    border: 1px solid #D3D9DB;
 }
 
 .dayContainer {
