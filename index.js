@@ -131,27 +131,29 @@
   }
 
   function mapObjToDom() {
-    var nameArr;
-    var nameArrLength;
+    var nameAgeArr;
+    var nameAgeArrLength;
     var divider;
     var percentage;
     var docFrag;
     var divList;
     for(var arr in finalObject) {
-      nameArr = finalObject[arr];
-      nameArrLength = nameArr.length;
-      divider = getDivider(1, 5, nameArrLength, 2, 0);
+      nameAgeArr = finalObject[arr];
+      nameAgeArrLength = nameAgeArr.length;
+      divider = getDivider(1, 5, nameAgeArrLength, 2, 0);
       percentage = 100 / divider;
       docFrag = document.createDocumentFragment();
-      nameArr.map(function (innerArray) {
+      nameAgeArr.map(function (innerArray) {
         docFrag.appendChild(createDiv(innerArray[0], percentage, innerArray[1]));
       });
-      divList = docFrag.querySelectorAll('div.initialNameBox');
+      divList = docFrag.querySelectorAll('div.' + initialNameBoxClassName);
       divList = Array.prototype.slice.call(divList, 0);
       divList.sort(function(a, b) {
-        return parseInt(a.getAttribute("age")) - parseInt(b.getAttribute("age"));
-      }).forEach(function(bug) {
-        document.getElementById(arr).appendChild(bug);
+        a = parseInt(a.getAttribute("age"));
+        b = parseInt(b.getAttribute("age"));
+        return a - b;
+      }).forEach(function(div) {
+        document.getElementById(arr).appendChild(div);
       });
     }
   }
