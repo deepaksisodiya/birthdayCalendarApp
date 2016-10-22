@@ -21,6 +21,17 @@
     }
   }, false);
 
+  var textArea = document.getElementById('jsonData');
+  textArea.addEventListener('blur', function (e) {
+    e.preventDefault();
+
+    var jsonD = document.getElementById('jsonData').value;
+    jsonD = JSON.parse(jsonD);
+    var textedJson = JSON.stringify(jsonD,null, 4);
+    document.getElementById('jsonData').value = textedJson;
+
+  }, false);
+
   function isValidForm() {
     if(jsonData && year) {
       if(isValidJSON()) {
