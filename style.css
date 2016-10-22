@@ -5,9 +5,9 @@
 }
 
 .textArea {
-    width: 600px;
-    height: 350px;
-    margin-right: 50px;
+    width: 685px;
+    height: 404px;
+    margin-right: 44px;
     font-size: 15px;
     border-radius: 3px;
     border-color: #D3D9DB;
@@ -15,7 +15,7 @@
 
 .dayBox {
     width: 155px;
-    height: 175px;
+    height: 155px;
     border-color: #D3D9DB;
     background-color: white;
     display: flex;
@@ -48,42 +48,46 @@
     background-color: #ABA1EC;
     text-align: end;
     color: #D0E8FC;
-    padding-right: 14px;
+    padding-right: 16px;
     padding-top: 13px;
     padding-bottom: 13px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    font-family: sans-serif;
 }
 
 .form {
     display: flex;
-    margin-top: 40px;
+    margin-top: 44px;
 }
 
 .yearText {
-    font-size: 30px;
+    font-size: 21px;
     color: #7D8A94;
+    font-family: sans-serif;
 }
 
 .yearInput {
     border: 1px solid #D3D9DB;
     border-radius: 3px;
-    padding: 10px;
+    padding: 19px;
     font-size: 20px;
-    margin-top: 5px;
-    margin-bottom: 20px;
+    margin-top: 9px;
+    margin-bottom: 46px;
+    width: 272px;
 }
 
 .updateButton {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 43px;
+    padding-right: 43px;
     background-color: #1789EC;
     color: #D0E8FC;
     border-radius: 5px;
     border-color: transparent;
     font-size: 20px;
+    font-family: sans-serif;
 }
 
 .initialNameText {
