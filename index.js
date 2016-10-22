@@ -38,16 +38,16 @@
         if(isValidYear()) {
           return true;
         } else {
-          alert('Year field is not correct!');
+          alert('You have entered an invalid year. Please try again.');
           return false;
         }
         return true;
       } else {
-        alert('JSON is not correct!');
+        alert('You have entered an invalid json. Please try again.');
         return false;
       }
     } else {
-      alert('Please fill all fields of form');
+      alert('Please fill all fields of form.');
     }
   }
 
